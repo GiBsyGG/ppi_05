@@ -1,5 +1,5 @@
 # Herraminentas/Aplicativos
- - - - 
+ - - -
 [<image src="https://fu.do/assets/img/fudo_logo_color-15654b45.svg" alt="Fudo" width = '80' height = '60'>](https://fu.do/es-co/funcionalidades/)
 #### Características de Fudo
   - Categorías y sub-categorías de productos e ingredientes
@@ -10,21 +10,21 @@
   - Base de datos de clientes
   - Reportes gráficos de estadísticas de ventas
   - Reportes gráficos de estadísticas de productos
- - - -   
+ - - -
 [<image src="https://joinposter.mx/i/site/poster-logo@2x.png" alt="Poster" width = '120' height = '40'>](https://joinposter.mx/)
 ### Características de Poster
   - Control de stock (ingredientes)
   - análisis de rendimiento de menús
   - Descubrimiento de horas pico (análisis de ventas organizados por fecha y hora)
   - generación de reportes
-- - -  
+- - -
 ## [TouchBistro](https://www.touchbistro.com/)
 ### Características de TouchBistro
   - Administración de menús
   - Manejo de inventarios
   - Gráficas estadísticas de ventas
   - Reportes y análisis de ventas y rendimiento
-- - - 
+- - -
 # Software Open Source
 - Django
   - ORM
@@ -40,6 +40,14 @@
   - Fácil de integrar
   - No impone una estructura
   - Es un microframework (adecuado para proyectos pequeños)
+- PostgreSQL
+  - Escalable
+  - Soporta transacciones ACID
+  - Es altamente configurable
+  - Soporta múltiples lenguajes de programación
+  - Ofrece múltiples características avanzadas (soporte para JSON)
+  - Tiene una gran comunidad de usuarios
+
 
 # Librerias disponibles
  - Matplotlib

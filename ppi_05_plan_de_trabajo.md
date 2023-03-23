@@ -1,7 +1,5 @@
 # Plan de desarrollo de la aplicación
 
-Este es el plan de desarrollo para la creación de una aplicación que consta de 10 semanas. A continuación, se describen las actividades que se llevarán a cabo en cada semana:
-
 ## Entrega 03
 - Crear el ambiente de desarrollo y configurar las herramientas.
 - Definción del calendario de desarrollo.

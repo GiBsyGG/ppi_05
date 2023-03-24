@@ -30,17 +30,17 @@
   - ORM
   - Adminstrador de bases de datos
   - Middleware (Agregar funcionalidades como autenticación)
-  - Plantillas (permite separar código HTML de la lógica
+  - Plantillas (permite separar código HTML de la lógica)
   - Gran cantidad de medidas de seguridad
   - Escalabilidad
-### [Flask]((https://flask.palletsprojects.com/en/2.2.x/))
+### [Flask](https://flask.palletsprojects.com/en/2.2.x/)
   - Ligereza
   - Flexibilidad
   - Modularidad
   - Fácil de integrar
   - No impone una estructura
   - Es un microframework (adecuado para proyectos pequeños)
-### [PostgreSQL]((https://www.postgresql.org/))
+### [PostgreSQL](https://www.postgresql.org/)
   - Escalable
   - Soporta transacciones ACID
   - Es altamente configurable

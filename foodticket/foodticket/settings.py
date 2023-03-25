@@ -31,6 +31,11 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "clientes.apps.ClientesConfig",
+    "home.apps.HomeConfig",
+    "menus.apps.MenusConfig",
+    "pedidos.apps.PedidosConfig",
+    "restaurantes.apps.RestaurantesConfig"
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -105,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "America/Bogota"
 
 USE_I18N = True
 

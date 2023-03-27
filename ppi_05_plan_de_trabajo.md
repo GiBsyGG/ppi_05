@@ -44,29 +44,29 @@
   4. Realiza pruebas y ajustes: Una vez que se haya implementado la funcionalidad de agregar, modificar y eliminar menús, se debe realizar pruebas exhaustivas para asegurarse de que funciona correctamente y que cumple con los requisitos de usuario.
 
 ## **Entrega 05**
-### *Fecha: 13 horas del viernes 31 de marzo*
+### *Fecha: 13 horas del viernes 14 de abril*
 - Crear las vistas y plantillas para el inicio de sesión y registro de usuarios.
 - Implementar la autenticación y autorización de usuarios.
 - Crear las vistas y plantillas para la gestión de clientes.
 - Implementar la funcionalidad para agregar, modificar y eliminar clientes.
 
 ## **Entrega 06**
-### *Fecha: 13 horas del viernes 31 de marzo*
+### *Fecha: 13 horas del viernes 21 de abril*
 - Crear las vistas y plantillas para la gestión de pedidos.
 - Implementar la funcionalidad para agregar, modificar y eliminar pedidos.
 
 ## **Entrega 07**
-### *Fecha: 13 horas del viernes 31 de marzo*
+### *Fecha: 13 horas del viernes 28 de abril*
 - Crear las vistas y plantillas para los reportes de rendimiento de los restaurantes.
 - Implementar la funcionalidad para generar reportes de ventas y estadísticas.
 
 ## **Entrega 08**
-### *Fecha: 13 horas del viernes 31 de marzo*
+### *Fecha: 13 horas del viernes 5 de mayo*
 - Crear las vistas y plantillas para la configuración de la aplicación.
 - Implementar la funcionalidad para cambiar opciones de configuración.
 
 ## **Entrega 09**
-### *Fecha: 13 horas del viernes 31 de marzo*
+### *Fecha: 13 horas del viernes 12 de mayo*
 - Crear las vistas y plantillas para la ayuda y soporte de la aplicación.
 - Implementar la funcionalidad para mostrar documentación y responder preguntas frecuentes.
 - Realizar pruebas de integración y funcionales de la aplicación.
@@ -74,5 +74,5 @@
 - Realizar la documentación y limpieza del código.
 
 ## **Entrega 10**
-### *Fecha: 13 horas del viernes 31 de marzo*
+### *Fecha: 13 horas del viernes 26 de mayo*
 - Presentar la aplicación y entregarla.

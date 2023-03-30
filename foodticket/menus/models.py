@@ -1,7 +1,7 @@
 from django.db import models
-
+from restaurantes.models import Restaurante
 # Create your models here.
-class Menus(models.Model):
+class Menu(models.Model):
     nombre = models.CharField(max_length=100)
     descripcion = models.CharField(max_length=200)
     precio = models.IntegerField()
@@ -16,7 +16,7 @@ class Menus(models.Model):
     )
     dia = models.CharField(max_length=10, choices=DIA_OPCIONES)
 
-    id_restaurante = models.ForeignKey(Restaurantes, on_delete=models.CASCADE)
+    id_restaurante = models.ForeignKey(Restaurante, on_delete=models.CASCADE)
 
 
 

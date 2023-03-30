@@ -1,6 +1,7 @@
-# Plan de desarrollo de la aplicación
+# **Plan de desarrollo de la aplicación**
 
-## Entrega 03
+## **Entrega 03**
+### *Fecha: 13 horas del viernes 24 de marzo*
 - **Crear el ambiente de desarrollo y configurar las herramientas:** creación de un entorno de trabajo adecuado para la elaboración del aplicativo. Esta parte integra los siguientes pasos:
   1. Seleccionar un lenguaje de programación adecuado para el desarrollo del aplicativo. (Python)
   2. Instalación del entorno de desarrollo integrado (IDE) para facilitar el proceso de desarrollo. (visual Studio Code)
@@ -18,7 +19,8 @@
 
 - Creación del Hola Mundo en la ruta home
 
-## Entrega 04
+## **Entrega 04**
+### *Fecha: 13 horas del viernes 31 de marzo*
 
 - **Crear el modelo de la base de datos local:** Esta etapa implica diseñar la estructura de la base de datos local que se utilizará para almacenar y organizar la información del sistema de gestión de restaurantes.
 
@@ -41,31 +43,36 @@
   3. Implementa la lógica de negocio: Una vez que se haya creado las interfaces de usuario, se debe implementar la lógica de negocio para agregar, modificar y eliminar menús.
   4. Realiza pruebas y ajustes: Una vez que se haya implementado la funcionalidad de agregar, modificar y eliminar menús, se debe realizar pruebas exhaustivas para asegurarse de que funciona correctamente y que cumple con los requisitos de usuario.
 
-## Entrega 05
+## **Entrega 05**
+### *Fecha: 13 horas del viernes 14 de abril*
 - Crear las vistas y plantillas para el inicio de sesión y registro de usuarios.
 - Implementar la autenticación y autorización de usuarios.
 - Crear las vistas y plantillas para la gestión de clientes.
 - Implementar la funcionalidad para agregar, modificar y eliminar clientes.
 
-## Entrega 06
+## **Entrega 06**
+### *Fecha: 13 horas del viernes 21 de abril*
 - Crear las vistas y plantillas para la gestión de pedidos.
 - Implementar la funcionalidad para agregar, modificar y eliminar pedidos.
 
-## Entrega 07
+## **Entrega 07**
+### *Fecha: 13 horas del viernes 28 de abril*
 - Crear las vistas y plantillas para los reportes de rendimiento de los restaurantes.
 - Implementar la funcionalidad para generar reportes de ventas y estadísticas.
 
-## Entrega 08
+## **Entrega 08**
+### *Fecha: 13 horas del viernes 5 de mayo*
 - Crear las vistas y plantillas para la configuración de la aplicación.
 - Implementar la funcionalidad para cambiar opciones de configuración.
 
-## Entrega 09
+## **Entrega 09**
+### *Fecha: 13 horas del viernes 12 de mayo*
 - Crear las vistas y plantillas para la ayuda y soporte de la aplicación.
 - Implementar la funcionalidad para mostrar documentación y responder preguntas frecuentes.
 - Realizar pruebas de integración y funcionales de la aplicación.
-
-
-## Entrega 10
 - Resolver los errores encontrados durante las pruebas.
 - Realizar la documentación y limpieza del código.
+
+## **Entrega 10**
+### *Fecha: 13 horas del viernes 26 de mayo*
 - Presentar la aplicación y entregarla.

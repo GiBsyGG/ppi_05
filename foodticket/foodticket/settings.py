@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     "home.apps.HomeConfig",
     "menus.apps.MenusConfig",
     "pedidos.apps.PedidosConfig",
-    "restaurantes.apps.RestaurantesConfig"
+    "restaurantes.apps.RestaurantesConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

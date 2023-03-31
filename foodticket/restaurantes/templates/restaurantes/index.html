@@ -20,7 +20,7 @@
                 <img src="{% static 'home/images/logo.png' %}" alt="Logo FoodTicket">
             </figure>
             <ul class="nav-sidebar__menu">
-                <li class="nav-sidebar__menu__item selected">
+                <li class="nav-sidebar__menu__item">
                     <figure>
                         <img src="{% static 'home/images/home.png' %}" alt="Icono casa" width=30 height=30>
                     </figure>
@@ -38,7 +38,7 @@
                     </figure>
                     <a href="{% url 'menus:index' %}"><div>Menús</div></a>
                 </li>
-                <li class="nav-sidebar__menu__item">
+                <li class="nav-sidebar__menu__item selected">
                     <figure>
                         <img src="{% static 'home/images/restaurante.png' %}" alt="Icono restaurante" width=30 height=30>
                     </figure>
@@ -72,13 +72,8 @@
     <main>
         <div class="principal">
             <div class="principal__texto">
-                <h1>Bienvenido a FoodTicket</h1>
+                <h1>Apartado Restaurantes</h1>
                 <p>Tu asistente para restaurante</p>
-            </div>
-            <div class="principal__imagen">
-                <figure>
-                    <img src="{% static 'home/images/principal_icon.png' %}" alt="Icono plato">
-                </figure>
             </div>
         </div>
     </main>

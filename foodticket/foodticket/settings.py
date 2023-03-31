@@ -38,11 +38,11 @@ if RENDER_EXTERNAL_HOSTNAME:
 # Application definition
 
 INSTALLED_APPS = [
-    "clientes.apps.ClientesConfig",
-    "home.apps.HomeConfig",
-    "menus.apps.MenusConfig",
-    "pedidos.apps.PedidosConfig",
-    "restaurantes.apps.RestaurantesConfig",
+    "foodticket.clientes.apps.ClientesConfig",
+    "foodticket.home.apps.HomeConfig",
+    "foodticket.menus.apps.MenusConfig",
+    "foodticket.pedidos.apps.PedidosConfig",
+    "foodticket.restaurantes.apps.RestaurantesConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

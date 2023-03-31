@@ -87,12 +87,18 @@ WSGI_APPLICATION = "foodticket.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    # Ahora vamos a usar postgres
-    "default": dj_database_url.config(
+    "default": {
+        # Esta era la configuración que teníamos antes para sqlite
+        # "ENGINE": "django.db.backends.sqlite3",
+        # "NAME": BASE_DIR / "db.sqlite3",
+
+        # Ahora vamos a usar postgres
+        dj_database_url.config(
             # Esta será la que se use en desarrollo, la local, pero pordemos seguir con sqlite si queremos
             default="postgres://postgres:postgres@localhost/postgres",
             conn_max_age=600
         )
+    }
 }
 
 

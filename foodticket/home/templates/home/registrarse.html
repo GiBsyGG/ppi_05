@@ -1,0 +1,62 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <div class="principal">
+        <div class="principal__texto">
+            <h1>Registrarse</h1>
+            <p>{{ error }}</p>
+            <form action={% url 'home:registrarse' %} method="POST" class="form-registro">
+                {% csrf_token %}
+                <div class="form-registro__user">
+                    <div class="form-item">
+                        <label for="username">Usuario:</label>
+                        <input type="text" name="username" id="username" class="form-input" placeholder="Ingresa tu nombre de usuario">
+                    </div>
+                    <div class="form-item">
+                        <label for="password1">Contraseña:</label>
+                        <input type="password" name="password1" id="password1" class="form-input" placeholder="Ingresa tu contraseña">
+                    </div>
+                    <div class="form-item">
+                        <label for="password2">Confirmar contraseña:</label>
+                        <input type="password" name="password2" id="password2" class="form-input" placeholder="Confirmar contraseña">
+                    </div>
+                </div>
+
+                <div class="form-registro__restaurante">
+                    <div class="form-item">
+                        <label for="nombre_restaurante">Nombre del restaurante:</label>
+                        <input type="text" name="nombre_restaurante" id="nombre_restaurante" class="form-input" 
+                        placeholder="Ingresa el nombre de tu restaurante" required>
+                    </div>
+                    <div class="form-item">
+                        <label for="nit_restaurante">NIT:</label>
+                        <input type="text" name="nit_restaurante" id="nit_restaurante" class="form-input" 
+                        placeholder="Ingresa el NIT de tu restaurante">
+                    </div>
+                    <div class="form-item">
+                        <label for="direccion_restaurante">Dirección:</label>
+                        <input type="text" name="direccion_restaurante" id="direccion_restaurante" class="form-input" 
+                        placeholder="Ingresa la direccion de tu restaurante" required>
+                    </div>
+                    <div class="form-item">
+                        <label for="telefono_restaurante">Teléfono:</label>
+                        <input type="text" name="telefono_restaurante" id="telefono_restaurante" class="form-input" 
+                        placeholder="Ingresa el teléfono de tu restaurante" required>
+                    </div>
+                    <div class="form-item">
+                        <label for="tipo_restaurante">Tipo:</label>
+                        <input type="text" name="tipo_restaurante" id="tipo_restaurante" class="form-input" 
+                        placeholder="Ingresa el tipo de restaurante">
+                    </div>
+                </div>
+
+                <div class="form-registro__botones">
+                    <button type="submit" class="form__botones__boton">Registrarse</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}

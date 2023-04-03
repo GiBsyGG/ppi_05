@@ -66,8 +66,18 @@
                 
             </ul>
             <ul class="nav-sidebar__login">
+                {% if user.is_authenticated %}
                 <li class="nav-sidebar__menu__item">
-                    <a href="{% url 'home:index' %}" class="nav-sidebar__menu__item__link">
+                    <a href="{% url 'home:cerrar_sesion' %}" class="nav-sidebar__menu__item__link">
+                        <figure>
+                            <img src="{% static 'home/images/logout.png' %}" alt="Icono casa" width=30 height=30>
+                        </figure>
+                        <p>Logout</p>
+                    </a>
+                </li>
+                {% else %}
+                <li class="nav-sidebar__menu__item">
+                    <a href="{% url 'home:login' %}" class="nav-sidebar__menu__item__link">
                         <figure>
                             <img src="{% static 'home/images/login.png' %}" alt="Icono casa" width=30 height=30>
                         </figure>
@@ -75,13 +85,14 @@
                     </a>
                 </li>
                 <li class="nav-sidebar__menu__item">
-                    <a href="{% url 'home:index' %}" class="nav-sidebar__menu__item__link">
+                    <a href="{% url 'home:registrarse' %}" class="nav-sidebar__menu__item__link">
                         <figure>
                             <img src="{% static 'home/images/registrarse.png' %}" alt="Icono casa" width=30 height=30>
                         </figure>
                         <p>Registrarse</p>
                     </a>
                 </li>
+                {% endif %}
             </ul>
         </nav>
     </header>

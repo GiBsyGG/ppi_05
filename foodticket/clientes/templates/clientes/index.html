@@ -1,82 +1,13 @@
+{% extends 'home/base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'home/css/reset.css' %}">
-    <link rel="stylesheet" href="{% static 'home/css/style.css' %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <title>FoodTicket</title>
-</head>
-<body>
-    <header>
-        <nav class="nav-sidebar">
-            <figure class="nav-sidebar__logo">
-                <img src="{% static 'home/images/logo.png' %}" alt="Logo FoodTicket">
-            </figure>
-            <ul class="nav-sidebar__menu">
-                <li class="nav-sidebar__menu__item">
-                    <figure>
-                        <img src="{% static 'home/images/home.png' %}" alt="Icono casa" width=30 height=30>
-                    </figure>
-                    <a href="{% url 'home:index' %}"><div>Home</div></a>
-                </li>
-                <li class="nav-sidebar__menu__item selected">
-                    <figure>
-                        <img src="{% static 'home/images/clientes.png' %}" alt="Icono clientes" width=30 height=30>
-                    </figure>
-                    <a href="{% url 'clientes:index' %}"><div>Clientes</div></a>
-                </li>
-                <li class="nav-sidebar__menu__item">
-                    <figure>
-                        <img src="{% static 'home/images/menus.png' %}" alt="Icono menus" width=30 height=30>
-                    </figure>
-                    <a href="{% url 'menus:index' %}"><div>Menús</div></a>
-                </li>
-                <li class="nav-sidebar__menu__item">
-                    <figure>
-                        <img src="{% static 'home/images/restaurante.png' %}" alt="Icono restaurante" width=30 height=30>
-                    </figure>
-                    <a href="{% url 'restaurantes:index' %}"><div>Restaurante</div></a>
-                </li>
-                <li class="nav-sidebar__menu__item">
-                    <figure>
-                        <img src="{% static 'home/images/pedidos.png' %}" alt="Icono pedidos" width=30 height=30>
-                    </figure>
-                    <a href="{% url 'pedidos:index' %}"><div>Pedidos</div></a>
-                </li>
-                
-            </ul>
-            <ul class="nav-sidebar__login">
-                <li class="nav-sidebar__menu__item">
-                    <figure>
-                        <img src="{% static 'home/images/login.png' %}" alt="Icono login" width=30 height=30>
-                    </figure>
-                    <a href="#"><div>Login</div></a>
-                </li>
-                <li class="nav-sidebar__menu__item">
-                    <figure>
-                        <img src="{% static 'home/images/registrarse.png' %}" alt="Icono registrarse" width=30 height=30>
-                    </figure>
-                    <a href="#"><div>Registrarse</div></a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <div class="principal">
-            <div class="principal__texto">
-                <h1>Apartado Clientes</h1>
-                <p>Tu asistente para restaurante</p>
-            </div>
+{% block content %}
+<main>
+    <div class="principal">
+        <div class="principal__texto">
+            <h1>Apartado Clientes</h1>
+            <p>Tu asistente para restaurante</p>
         </div>
-    </main>
-    
-</body>
-</html>
+    </div>
+</main>
+{% endblock  %}

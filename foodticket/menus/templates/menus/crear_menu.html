@@ -1,0 +1,77 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <div class="principal">
+        <div class="principal__texto">
+            <h1>Crea tu Menú</h1>
+        </div>
+        <p>{{ error }}</p>
+        <form action="{% url 'menus:crear_menu' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-crear__menu">
+                <div class="form-item">
+                    <label for="menu_nombre">Nombre del menú:</label>
+                    <input type="text" name="menu_nombre" id="menu_nombre" class="form-input" placeholder="Ingresa el nombre de tu menú" required>
+                </div>
+                <div class="form-item">
+                    <label for="menu_descripcion">Descripción del menú:</label>
+                    <textarea name="menu_descripcion" id="menu_descripcion" cols="30" rows="10" class="form-input" placeholder="Ingresa una descripción de tu menú" required></textarea>
+                </div>
+                <div class="form-item">
+                    <label for="menu_precio">Precio: $</label>
+                    <input type="number" name="menu_precio" id="menu_precio" class="form-input" placeholder="0" required>
+                </div>
+                <h3>Dias ofrecido</h3>
+                <p>Selecciona mínimo uno</p>
+                <div class="form-item">
+                    <label for="menu_dia1">Dia1:</label>
+                    <select name="menu_dia1" id="menu_dia1">
+                        <option value="Diario">Diario</option>
+                        <option value="Lunes">Lunes</option>
+                        <option value="Martes">Martes</option>
+                        <option value="Miercoles">Miercoles</option>
+                        <option value="Jueves">Jueves</option>
+                        <option value="Viernes">Viernes</option>
+                        <option value="Sabado">Sabado</option>
+                        <option value="Domingo">Domingo</option>
+                    </select>
+                </div>
+                <div class="form-item">
+                    <label for="menu_dia2">Dia2:</label>
+                    <select name="menu_dia2" id="menu_dia2">
+                        <option value="">--</option>
+                        <option value="Lunes">Lunes</option>
+                        <option value="Martes">Martes</option>
+                        <option value="Miercoles">Miercoles</option>
+                        <option value="Jueves">Jueves</option>
+                        <option value="Viernes">Viernes</option>
+                        <option value="Sabado">Sabado</option>
+                        <option value="Domingo">Domingo</option>
+                    </select>
+                </div>
+                <div class="form-item">
+                    <label for="menu_dia3">Dia3:</label>
+                    <select name="menu_dia3" id="menu_dia3">
+                        <option value="">--</option>
+                        <option value="Lunes">Lunes</option>
+                        <option value="Martes">Martes</option>
+                        <option value="Miercoles">Miercoles</option>
+                        <option value="Jueves">Jueves</option>
+                        <option value="Viernes">Viernes</option>
+                        <option value="Sabado">Sabado</option>
+                        <option value="Domingo">Domingo</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-crear__menu__botones">
+                <button type="submit" class="form__botones__boton">Crear</button>
+            </div>
+
+        </form>
+    </div>
+    </div>
+</main>
+{% endblock  %}

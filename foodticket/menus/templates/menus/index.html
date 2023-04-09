@@ -6,7 +6,16 @@
     <div class="principal">
         <div class="principal__texto">
             <h1>Apartado Menus</h1>
-            <p>Tu asistente para restaurante</p>
+            <a href="{% url 'menus:crear_menu' %}" class="menu-create-link">
+                <p>Crear Menú</p>
+            </a>
+        </div>
+        
+        <div class="menus">
+            {% if menus_restaurante %}
+            {% else %}
+                <p>No hay menús creados</p>
+            {% endif %}
         </div>
     </div>
 </main>

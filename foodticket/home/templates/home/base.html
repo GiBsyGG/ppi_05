@@ -11,6 +11,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+    <style>
+        .form-input {
+            width: 200px;
+            padding:5px;
+            border-radius:5px;
+          }
+    </style>
     <title>FoodTicket</title>
 </head>
 <body>
@@ -63,7 +71,7 @@
                         <p>Pedidos</p>
                     </a>
                 </li>
-                
+
             </ul>
             <ul class="nav-sidebar__login">
                 {% if user.is_authenticated %}
@@ -99,6 +107,6 @@
 
     {% block content %}
     {% endblock  %}
-    
+
 </body>
 </html>

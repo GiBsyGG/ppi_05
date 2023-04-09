@@ -11,12 +11,45 @@
             </a>
         </div>
         
+        {% if request.user %}
         <div class="menus">
             {% if menus_restaurante %}
+                <table class="menus_table">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Dia disponible</th>
+                        <th>Dia disponible</th>
+                        <th>Dia disponible</th>
+                    </tr>
+                    {% for menu in menus_restaurante %}
+                        <tr>
+                            <td>{{ menu.nombre }}</td>
+                            <td>{{ menu.descripcion }}</td>
+                            <td>{{ menu.precio }}</td>
+                            <td>{{ menu.dia1 }}</td>
+                            <td>{{ menu.dia2 }}</td>
+                            <td>{{ menu.dia3 }}</td>
+                            <td>
+                                <a href="{% url 'menus:editar_menu' menu.id %}" class="menu-edit-link">
+                                    <p>Editar</p>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{% url 'menus:eliminar_menu' menu.id %}" class="menu-delete-link">
+                                    <p>Eliminar</p>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
             {% else %}
                 <p>No hay menús creados</p>
             {% endif %}
         </div>
+        {% endif %}
+
     </div>
 </main>
 {% endblock  %}

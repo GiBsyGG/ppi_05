@@ -5,17 +5,17 @@
 <main>
     <div class="principal">
         <div class="principal__texto">
-            <h1>Crea tu Menú</h1>
+            <h1>Editar menú</h1>
         </div>
         <p>{{ error }}</p>
-        <form action="{% url 'menus:crear_menu' %}" method="POST">
+        <form action="{% url 'menus:editar_menu' menu.id %}" method="POST">
             {% csrf_token %}
             {{ form.as_p }}
-            <div class="form-crear__menu__botones">
-                <button type="submit" class="form__botones__boton">Crear</button>
+            <div class="form-editar__menu__botones">
+                <button type="submit" class="form__botones__boton">Guardar</button>
             </div>
-
         </form>
+        
     </div>
     </div>
 </main>

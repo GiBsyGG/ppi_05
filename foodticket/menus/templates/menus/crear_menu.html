@@ -1,0 +1,22 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <div class="principal">
+        <div class="principal__texto">
+            <h1>Crea tu Menú</h1>
+        </div>
+        <p>{{ error }}</p>
+        <form action="{% url 'menus:crear_menu' %}" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="form-crear__menu__botones">
+                <button type="submit" class="form__botones__boton">Crear</button>
+            </div>
+
+        </form>
+    </div>
+    </div>
+</main>
+{% endblock  %}

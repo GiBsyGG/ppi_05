@@ -1,5 +1,5 @@
 from django.db import models
-from restaurantes.models import Restaurante
+from restaurantes.models import RestauranteUsuario
 # Create your models here.
 class Menu(models.Model):
     nombre = models.CharField(max_length=100)
@@ -23,7 +23,6 @@ class Menu(models.Model):
         ('Viernes', 'Viernes'),
         ('Sábado', 'Sábado'),
         ('Domingo', 'Domingo'),
-        ('Diario', 'Diario'),
     )
     DIA3_OPCIONES = (
         ('Lunes', 'Lunes'),
@@ -33,13 +32,12 @@ class Menu(models.Model):
         ('Viernes', 'Viernes'),
         ('Sábado', 'Sábado'),
         ('Domingo', 'Domingo'),
-        ('Diario', 'Diario'),
     )
     dia1 = models.CharField(max_length=10, choices=DIA1_OPCIONES)
     dia2 = models.CharField(max_length=10, choices=DIA2_OPCIONES, blank=True)
     dia3 = models.CharField(max_length=10, choices=DIA3_OPCIONES, blank=True)
-    
-    id_restaurante = models.ForeignKey(Restaurante, on_delete=models.CASCADE)
+
+    id_restaurante = models.ForeignKey(RestauranteUsuario, on_delete=models.CASCADE)
 
 
 

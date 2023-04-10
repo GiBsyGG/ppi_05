@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-9_*1sp$6crz9qrx8p!7947)s@^szku(2l9n2_lpvrejuh9h+0&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['GiBsyGG.pythonanywhere.com']
 
 
 # Application definition
@@ -121,6 +121,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
+LOGIN_URL = "home:login"
+STATIC_ROOT = '/home/GiBsyGG/ppi_05/static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

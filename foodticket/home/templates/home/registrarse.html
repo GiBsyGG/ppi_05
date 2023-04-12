@@ -11,16 +11,20 @@
                 {% csrf_token %}
                 <div class="form-registro__user">
                     <div class="form-item">
+                        <label for="correo">Correo:</label>
+                        <input type="text" name="correo" id="correo" class="form-input" placeholder="ejemplo@gmail.com" required>
+                    </div>
+                    <div class="form-item">
                         <label for="username">Usuario:</label>
-                        <input type="text" name="username" id="username" class="form-input" placeholder="Nombre de usuario">
+                        <input type="text" name="username" id="username" class="form-input" placeholder="Nombre de usuario" required>
                     </div>
                     <div class="form-item">
                         <label for="password1">Contraseña:</label>
-                        <input type="password" name="password1" id="password1" class="form-input" placeholder="Contraseña">
+                        <input type="password" name="password1" id="password1" class="form-input" placeholder="Contraseña" required>
                     </div>
                     <div class="form-item">
                         <label for="password2">Confirmar contraseña:</label>
-                        <input type="password" name="password2" id="password2" class="form-input" placeholder="Confirmar contraseña">
+                        <input type="password" name="password2" id="password2" class="form-input" placeholder="Confirmar contraseña" required>
                     </div>
                 </div>
 

@@ -25,7 +25,8 @@ def registrarse(request):
                 # Creamos el usuario
                 username = request.POST["username"]
                 password = request.POST["password1"]
-                user = User.objects.create_user(username=username, password=password)
+                email = request.POST["correo"]
+                user = User.objects.create_user(username=username, password=password, email=email)
                 user.save()
 
                 # Logeamos al usuario creando la sesión

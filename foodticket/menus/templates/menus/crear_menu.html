@@ -11,6 +11,7 @@
         <form action="{% url 'menus:crear_menu' %}" method="POST">
             {% csrf_token %}
             {{ form.as_p }}
+            <input type="checkbox" name="diario">Diario<br>
             <div class="form-crear__menu__botones">
                 <button type="submit" class="form__botones__boton">Crear</button>
             </div>

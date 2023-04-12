@@ -32,18 +32,32 @@ def crear_menu(request):
             "form": MenuForm
         })
     else:
+        print(request.POST)
         try:
-            # Buscamos el restaurante del usuario que está creando el menú
-            restaurante = get_object_or_404(RestauranteUsuario, usuario=request.user)
-            menu = Menu.objects.create(
-                nombre=request.POST["nombre"],
-                descripcion=request.POST["descripcion"],
-                precio=request.POST["precio"],
-                dia1=request.POST["dia1"],
-                dia2=request.POST["dia2"],
-                dia3=request.POST["dia3"],
-                id_restaurante=restaurante
-                )
+            # Llenamos el formulario con los datos ya creado con los datos del POST
+            form = MenuForm(request.POST)
+
+            # Guardamos los datos como un menu, pero no guardamos en la DB
+            menu = form.save(commit=False)
+
+            # Asignamos el restaurante del usuario a la variable restaurante
+            restaurante = RestauranteUsuario.objects.get(usuario=request.user)
+
+            # Asignamos el restaurante del usuario al menú
+            menu.id_restaurante = restaurante
+
+            # Comprobamos si el checkbox de diario está marcado para marcar todos los días
+            try:
+                if request.POST["diario"] == "on":
+                    menu.lunes = True
+                    menu.martes = True
+                    menu.miercoles = True
+                    menu.jueves = True
+                    menu.viernes = True
+                    menu.sabado = True
+                    menu.domingo = True
+            except:
+                pass
             
             # Guardamos el menú en la base de datos
             menu.save()

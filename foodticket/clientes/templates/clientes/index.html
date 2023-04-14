@@ -6,7 +6,14 @@
     <div class="principal">
         <div class="principal__texto">
             <h1>Apartado Clientes</h1>
-            <p>Tu asistente para restaurante</p>
+            <ul class="nav nav-tabs">
+                <li><a href="{% url 'compra' %}">Vender almuerzo</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="{% url 'venta' %}">Vender tiquetera </a>
+                </li>
+            </ul>
+            {% block content_clientes %}
+            {% endblock  %}
         </div>
     </div>
 </main>

@@ -32,7 +32,6 @@ def crear_menu(request):
             "form": MenuForm
         })
     else:
-        print(request.POST)
         try:
             # Llenamos el formulario con los datos ya creado con los datos del POST
             form = MenuForm(request.POST)
@@ -96,16 +95,11 @@ def editar_menu(request, menu_id):
         })
     else:
         try:
-            # Actualizamos los datos del menú
-            menu.nombre = request.POST["nombre"]
-            menu.descripcion = request.POST["descripcion"]
-            menu.precio = request.POST["precio"]
-            menu.dia1 = request.POST["dia1"]
-            menu.dia2 = request.POST["dia2"]
-            menu.dia3 = request.POST["dia3"]
+            # Llenamos el formulario con los datos ya creado con los datos del POST
+            form = MenuForm(request.POST, instance=menu)
 
-            # Guardamos el menú en la base de datos
-            menu.save()
+            # Actualizamos el menú en la base de datos
+            form.save()
 
             # Redirigimos al usuario a la página de menus
             return redirect("menus:index")

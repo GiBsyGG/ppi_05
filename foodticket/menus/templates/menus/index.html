@@ -19,18 +19,68 @@
                         <th>Nombre</th>
                         <th>Descripción</th>
                         <th>Precio</th>
-                        <th>Dia disponible</th>
-                        <th>Dia disponible</th>
-                        <th>Dia disponible</th>
+                        <th>L</th>
+                        <th>M</th>
+                        <th>M</th>
+                        <th>J</th>
+                        <th>V</th>
+                        <th>S</th>
+                        <th>D</th>
                     </tr>
                     {% for menu in menus_restaurante %}
                         <tr>
                             <td>{{ menu.nombre }}</td>
                             <td>{{ menu.descripcion }}</td>
                             <td>{{ menu.precio }}</td>
-                            <td>{{ menu.dia1 }}</td>
-                            <td>{{ menu.dia2 }}</td>
-                            <td>{{ menu.dia3 }}</td>
+                            <td>
+                                {% if menu.lunes %}
+                                    <p>Si</p>
+                                {% else %}
+                                    <p>No</p>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if menu.martes %}
+                                    <p>Si</p>
+                                {% else %}
+                                    <p>No</p>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if menu.miercoles %}
+                                    <p>Si</p>
+                                {% else %}
+                                    <p>No</p>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if menu.jueves %}
+                                    <p>Si</p>
+                                {% else %}
+                                    <p>No</p>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if menu.viernes %}
+                                    <p>Si</p>
+                                {% else %}
+                                    <p>No</p>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if menu.sabado %}
+                                    <p>Si</p>
+                                {% else %}
+                                    <p>No</p>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if menu.domingo %}
+                                    <p>Si</p>
+                                {% else %}
+                                    <p>No</p>
+                                {% endif %}
+                            </td>
                             <td>
                                 <a href="{% url 'menus:editar_menu' menu.id %}" class="menu-edit-link">
                                     <p>Editar</p>

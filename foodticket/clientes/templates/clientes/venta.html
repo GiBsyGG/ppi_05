@@ -1,0 +1,16 @@
+{% extends 'clientes/index.html' %}
+{% load static %}
+
+{% block content_clientes %}
+    <div>
+        {% if "valido" in request.GET %}
+            <p style="color: white;" >Información enviada correctamente</p>
+        {% endif %}
+        <form action="" method="POST" style="text-align: center;"> {% csrf_token %}
+            <table style="color: black; margin: 20px auto;">
+                {{formulario_venta.as_table}}
+            </table>
+            <input type="submit" value="Enviar" style="width: 150px;">
+        </form>
+    </div>
+{% endblock  %}

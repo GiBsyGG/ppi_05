@@ -7,9 +7,9 @@
         <div class="principal__texto">
             <h1>Apartado Clientes</h1>
             <ul class="nav nav-tabs">
-                <li><a href="{% url 'compra' %}">Vender almuerzo</a>
+                <li><a href="{% url 'clientes:compra' %}">Vender almuerzo</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="{% url 'venta' %}">Vender tiquetera </a>
+                    <a href="{% url 'clientes:venta' %}">Vender tiquetera </a>
                 </li>
             </ul>
             {% block content_clientes %}

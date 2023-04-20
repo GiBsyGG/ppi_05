@@ -1,0 +1,27 @@
+{% extends 'clientes/index.html' %}
+
+{% load static %}
+
+{% block content_clientes %}
+
+    <div>
+        {{ error }}
+        <h2>Selecciona tus comidas</h2>
+        {% if cantidad %}
+        <form action="{% url 'clientes:seleccionar_menu' cliente.id %}" method="POST" style="text-align: center;"> 
+            {% csrf_token %}
+            {% for i in cantidad %}
+            <select name="menu_{{ i }}" id="menu_{{ i }}">
+                {% for menu in menus %}
+                    <option value="{{ menu.id }}">{{ menu.nombre }}</option>
+                {% endfor %}
+            </select>
+            {% endfor %}
+            <div class="form-crear__menu__botones">
+                <button type="submit" class="form__botones__boton">Seleccionar</button>
+            </div>
+        </form>
+        {% endif %}
+    </div>
+
+{% endblock  %}

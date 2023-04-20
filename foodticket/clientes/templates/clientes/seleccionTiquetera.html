@@ -1,0 +1,37 @@
+{% extends 'clientes/index.html' %}
+
+{% load static %}
+
+{% block content_clientes %}
+
+    <div>
+        {{error}}
+        <form action="{% url 'clientes:seleccionar_tiquetera' cliente.id %}" method="POST" style="text-align: center;">
+        {% csrf_token %}
+            <label for="cedula">cedula: </label>
+            <input type="text" name="cedula" id="cedula" class="form-input" disabled value={{ cliente.cedula }}>
+            <div>
+                {% for tiquetera in tiqueteras %}
+                    <div>
+                        <h3>Tiquetera  {{ forloop.counter }}</h3>
+                        <p>Totales: {{ tiquetera.cantidad }}</p>
+                        <p>Redimidos: {{ tiquetera.redimidos }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <label for="tiquetera_select">Tiquetera: </label>
+            <select name="tiquetera_select" id="tiquetera_select">
+                {% for tiquetera in tiqueteras %}
+                    <option value="{{tiquetera.id}}">Tiquetera {{ forloop.counter }}</option>
+                {% endfor %}
+            </select>
+            <label for="cantidad">cantidad: </label>
+            <input type="number" name="cantidad" id="cantidad" class="form-input">
+
+            <div class="form-crear__menu__botones">
+                <button type="submit" class="form__botones__boton">Seleccionar</button>
+            </div>
+        </form>
+    </div>
+
+{% endblock  %}

@@ -9,4 +9,8 @@ class Pedido(models.Model):
     fecha = models.DateTimeField(default=timezone.now)
 
     id_restaurante = models.ForeignKey(Restaurante, on_delete=models.CASCADE)
+
+
+class Pedido_Menu(models.Model):
+    id_pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
     id_menu = models.ForeignKey(Menu, on_delete=models.CASCADE)

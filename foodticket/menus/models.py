@@ -4,7 +4,6 @@ from restaurantes.models import RestauranteUsuario
 class Menu(models.Model):
     nombre = models.CharField(max_length=100)
     descripcion = models.TextField(blank=True)
-    precio = models.IntegerField()
     lunes = models.BooleanField(default=False)
     martes = models.BooleanField(default=False)
     miercoles = models.BooleanField(default=False)

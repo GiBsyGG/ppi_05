@@ -1,9 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db import IntegrityError
 from django.core.exceptions import ObjectDoesNotExist
+from django.utils import timezone
 from .forms import FormularioVentaTiquetera,FormularioVentaAlmuerzo, ClienteForm, TiqueteraForm
 from .models import Cliente, Tiquetera
 from restaurantes.models import RestauranteUsuario
+from pedidos.models import Pedido, MenuPedido
+from menus.models import Menu
 
 # Create your views here.
 
@@ -123,9 +126,20 @@ def seleccionar_menu(request, cliente_id):
     if request.method == 'POST':
         menus_seleccionados = dict(request.POST.items())
         menus_seleccionados.pop("csrfmiddlewaretoken")
-        print(menus_seleccionados)
-        #TODO: Se debe guardar la compra en la base de datos, usaremos la app pedidos para esto
+        
+        pedido = Pedido.objects.create(id_restaurante=restaurante, fecha=timezone.now(), id_cliente=cliente)
 
+        # Se cuentas las veces que se pide un menu
+        cantidad = {}
+        for i, menu_id in menus_seleccionados.items():
+            cantidad[menu_id] = cantidad.get(menu_id, 0) + 1
+        
+        # Se añaden los menus al pedido y su cantidad
+        for i in menus_seleccionados:
+            menu = Menu.objects.get(pk=menus_seleccionados[i])
+            pedido.menus_comprados.add(menu, through_defaults={'cantidad': cantidad[str(menus_seleccionados[i])]})
+        
+        pedido.save()
 
         return redirect("clientes:index")
     else:

@@ -7,4 +7,5 @@ app_name = "pedidos"
 
 urlpatterns = [
     path("", views.IndexView.as_view(), name="index"),
+    path("historial/", views.Historial, name="historial"),
 ]

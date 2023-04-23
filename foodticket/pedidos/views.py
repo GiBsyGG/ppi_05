@@ -17,3 +17,7 @@ def Historial(request):
     restaurante = RestauranteUsuario.objects.get(usuario=request.user)
     pedidos = Pedido.objects.prefetch_related('menupedido_set__id_menu').filter(id_restaurante=restaurante)
     return render(request, "pedidos/historial.html", {"pedidos": pedidos})
+
+
+# TODO: Implementar vista para la revisión de pedidos pendientes en caso de que se llegue a necesitar o una vista
+# para revisar el historial de tiqueteras compradas

@@ -93,6 +93,8 @@ def compra(request):
         return render(request, "clientes/compra.html", {"formulario_compra": formulario})
 
 
+# TODO: Si no se seleccionan menus igual se descuenta la tiquetera, se debe solucionar esto tal vez guardando todo en una misma
+# View y en esta solo hacer la verificación si hay tiquetes suficientes o no
 @login_required
 def seleccionar_tiquetera(request, cliente_id):
 
@@ -156,3 +158,10 @@ def seleccionar_menu(request, cliente_id):
     else:
         return render(request, "clientes/seleccionMenu.html", 
                         {"menus": menus, "cliente": cliente})
+    
+
+# TODO: Al momento de vender tiqueteras sería conveniente vernder una cantidad especifica y no x cantidad
+# Tal vez reemplazar este modo de compra perimitiendo seleccionar la tiquetera previamente creada por el restaurante
+# TODO: Si se implementa lo anterior crear la view para crear tiqueteras
+# TODO: Implementar la funcionalidad para que el cliente pueda ver sus tiqueteras
+# TODO: Implementar la funcionalidad para dar almuerzos gratis por una cantidad de tiqueteras redimidas si el restaurante lo desea

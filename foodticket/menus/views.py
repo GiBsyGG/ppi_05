@@ -24,6 +24,7 @@ class IndexView(generic.ListView):
             return Menu.objects.filter(id_restaurante__usuario=self.request.user)
     
 
+# TODO: Implementar la lógica para permitir añadir una imagen al menú
 @login_required
 def crear_menu(request):
     """Crea un menú para el restaurante del usuario que está con la sesión iniciada"""

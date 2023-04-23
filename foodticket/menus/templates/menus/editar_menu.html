@@ -3,20 +3,41 @@
 
 {% block content %}
 <main>
-    <div class="principal">
-        <div class="principal__texto">
-            <h1>Editar menú</h1>
-        </div>
-        <p>{{ error }}</p>
-        <form action="{% url 'menus:editar_menu' menu.id %}" method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <div class="form-editar__menu__botones">
-                <button type="submit" class="form__botones__boton">Guardar</button>
+    <div class="container mt-5">
+        <div class="col-md-4 offset-md-3">
+            <div class="row">
+                <h1>Editar menú</h1>
+                <p>{{ error }}</p>
+                <form action="{% url 'menus:editar_menu' menu.id %}" method="POST" class="card card-body">
+                    {% csrf_token %}
+                    <div class='row'>
+                        <div>
+                            {% for field in form.visible_fields %}
+                                {% if field.field.widget.input_type != 'checkbox' %}
+                                    <div class="m-2">
+                                        <label class="form-check-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                        {{ field }}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="row g-2">
+                            {% for field in form.visible_fields %}
+                                {% if field.field.widget.input_type == 'checkbox' %}
+                                    <div class="col-5 m-2">
+                                        {{ field }}
+                                        <label class="form-check-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-outline-warning mt-4">Guardar</button>
+                </form>
+                
             </div>
-        </form>
-        
-    </div>
+        </div>
     </div>
 </main>
 {% endblock  %}

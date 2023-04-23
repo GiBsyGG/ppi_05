@@ -4,9 +4,7 @@ from restaurantes.models import RestauranteUsuario
 # Create your models here.
 class Cliente(models.Model):
     nombre = models.CharField(max_length=100)
-    cedula = models.CharField(max_length=20)
-
-    id_restaurante = models.OneToOneField(RestauranteUsuario, verbose_name=(""), on_delete=models.CASCADE)
+    cedula = models.CharField(max_length=20, unique=True)
 
 
 class Tiquetera(models.Model):

@@ -3,95 +3,87 @@
 
 {% block content %}
 <main>
-    <div class="principal">
-        <div class="principal__texto">
-            <h1>Apartado Menus</h1>
-            <a href="{% url 'menus:crear_menu' %}" class="menu-create-link">
-                <p>Crear Menú</p>
+    <div class="container mt-5">
+        <div class="col-md-6">
+            <h1>Tus Menús</h1>
+            <a href="{% url 'menus:crear_menu' %}" class="btn btn-lg btn-outline-warning mt-4">
+                <span>Crear Menú</span>
             </a>
         </div>
         
         {% if request.user %}
-        <div class="menus">
+        <div class="row row-cols-4 mt-2 gy-4">
             {% if menus_restaurante %}
-                <table class="menus_table">
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Descripción</th>
-                        <th>L</th>
-                        <th>M</th>
-                        <th>M</th>
-                        <th>J</th>
-                        <th>V</th>
-                        <th>S</th>
-                        <th>D</th>
-                    </tr>
                     {% for menu in menus_restaurante %}
-                        <tr>
-                            <td>{{ menu.nombre }}</td>
-                            <td>{{ menu.descripcion }}</td>
-                            <td>
-                                {% if menu.lunes %}
-                                    <p>Si</p>
-                                {% else %}
-                                    <p>No</p>
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if menu.martes %}
-                                    <p>Si</p>
-                                {% else %}
-                                    <p>No</p>
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if menu.miercoles %}
-                                    <p>Si</p>
-                                {% else %}
-                                    <p>No</p>
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if menu.jueves %}
-                                    <p>Si</p>
-                                {% else %}
-                                    <p>No</p>
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if menu.viernes %}
-                                    <p>Si</p>
-                                {% else %}
-                                    <p>No</p>
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if menu.sabado %}
-                                    <p>Si</p>
-                                {% else %}
-                                    <p>No</p>
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if menu.domingo %}
-                                    <p>Si</p>
-                                {% else %}
-                                    <p>No</p>
-                                {% endif %}
-                            </td>
-                            <td>
-                                <a href="{% url 'menus:editar_menu' menu.id %}" class="menu-edit-link">
-                                    <p>Editar</p>
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{% url 'menus:eliminar_menu' menu.id %}" class="menu-delete-link">
-                                    <p>Eliminar</p>
-                                </a>
-                            </td>
-                        </tr>
+                        <div class="col">
+                            <div class="card" style="width: 18rem">
+                                <img src="{% static 'home/images/plato_menu.png' %}" class="card-img-top" alt="menu">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ menu.nombre }}</h5>
+                                    <div class="overflow-hidden" style="height: 8rem">
+                                        <p class="card-text h-25">{{ menu.descripcion }}</p>
+                                    </div>
+                                    <div class="row row-cols-4">
+                                        <p class="col card-text">L: 
+                                            {% if menu.lunes %}
+                                                <input class="form-check-input" type="checkbox" checked disabled>
+                                            {% else %}
+                                                <input class="form-check-input" type="checkbox" disabled>
+                                            {% endif %}
+                                        </p>
+                                        <p class="col card-text">M: 
+                                            {% if menu.martes %}
+                                                <input class="form-check-input" type="checkbox" checked disabled>
+                                            {% else %}
+                                                <input class="form-check-input" type="checkbox" disabled>
+                                            {% endif %}
+                                        </p>
+                                        <p class="col card-text">M: 
+                                            {% if menu.miercoles %}
+                                                <input class="form-check-input" type="checkbox" checked disabled>
+                                            {% else %}
+                                                <input class="form-check-input" type="checkbox" disabled>
+                                            {% endif %}
+                                        </p>
+                                        <p class="col card-text">J: 
+                                            {% if menu.jueves %}
+                                                <input class="form-check-input" type="checkbox" checked disabled>
+                                            {% else %}
+                                                <input class="form-check-input" type="checkbox" disabled>
+                                            {% endif %}
+                                        </p>
+                                        <p class="col card-text">V: 
+                                            {% if menu.viernes %}
+                                                <input class="form-check-input" type="checkbox" checked disabled>
+                                            {% else %}
+                                                <input class="form-check-input" type="checkbox" disabled>
+                                            {% endif %}
+                                        </p>
+                                        <p class="col card-text">S: 
+                                            {% if menu.sabado %}
+                                                <input class="form-check-input" type="checkbox" checked disabled>
+                                            {% else %}
+                                                <input class="form-check-input" type="checkbox" disabled>
+                                            {% endif %}
+                                        </p>
+                                        <p class="col card-text">D: 
+                                            {% if menu.domingo %}
+                                                <input class="form-check-input" type="checkbox" checked disabled>
+                                            {% else %}
+                                                <input class="form-check-input" type="checkbox" disabled>
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                    <a href="{% url 'menus:editar_menu' menu.id %}" class="btn btn-outline-warning mt-4 me-3">
+                                        <span>Editar</span>
+                                    </a>
+                                    <a href="{% url 'menus:eliminar_menu' menu.id %}" class="btn btn-outline-danger mt-4 me-3">
+                                        <span>Eliminar</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     {% endfor %}
-                </table>
             {% else %}
                 <p>No hay menús creados</p>
             {% endif %}

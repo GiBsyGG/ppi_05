@@ -1,13 +1,13 @@
 from django import forms
 from .models import Cliente, Tiquetera
 class FormularioVentaTiquetera(forms.Form):
-    nombre = forms.CharField(label="Nombre")
-    cedula = forms.CharField(label="Cedula", required=True)
-    cantidad = forms.IntegerField(label="Cantidad", required=True)
+    nombre = forms.CharField(label="Nombre", widget=forms.TextInput(attrs={"class": "form-control"}))
+    cedula = forms.CharField(label="Cedula", widget=forms.TextInput(attrs={"class": "form-control", "required": True}))
+    cantidad = forms.IntegerField(label="Cantidad", widget=forms.NumberInput(attrs={"class": "form-control", "required": True}))
     
 
 class FormularioVentaAlmuerzo(forms.Form):
-    cedula = forms.CharField(label="Cedula", required=True)
+    cedula = forms.CharField(label="Cedula", widget=forms.TextInput(attrs={"class": "form-control", "required": True}))
 
 
 class ClienteForm(forms.ModelForm):

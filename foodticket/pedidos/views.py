@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
-
+from django.contrib.auth.decorators import login_required
 from .models import Pedido, MenuPedido
 from restaurantes.models import RestauranteUsuario
 # Create your views here.
@@ -10,6 +10,7 @@ class IndexView(generic.TemplateView):
     template_name = "pedidos/index.html"
 
 
+@login_required
 def Historial(request):
     """Vista para la revisión del historial de pedidos"""
     # TODO: Implementar vista para el historial de pedidos

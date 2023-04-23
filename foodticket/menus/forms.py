@@ -8,8 +8,8 @@ class MenuForm(forms.ModelForm):
         # Campos que se mostrarán en el formulario
         fields = ["nombre", "descripcion", "lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"]
         widgets = {
-            "nombre": forms.TextInput(attrs={"class": "form-control", "required": True}),
-            "descripcion": forms.Textarea(attrs={"class": "form-control", "required": True}),
+            "nombre": forms.TextInput(attrs={"class": "form-control mt-1", "required": True}),
+            "descripcion": forms.Textarea(attrs={"class": "form-control mt-1", "required": True}),
             "lunes": forms.CheckboxInput(attrs={"class": "form-check-input"}),
             "martes": forms.CheckboxInput(attrs={"class": "form-check-input"}),
             "miercoles": forms.CheckboxInput(attrs={"class": "form-check-input"}),

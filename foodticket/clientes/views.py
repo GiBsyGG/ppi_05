@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.db import IntegrityError
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 from .forms import FormularioVentaTiquetera,FormularioVentaAlmuerzo, ClienteForm, TiqueteraForm
 from .models import Cliente, Tiquetera
 from restaurantes.models import RestauranteUsuario
@@ -15,6 +16,8 @@ from menus.models import Menu
 def index(request):
     return render(request, "clientes/index.html")
 
+
+@login_required
 def venta(request):
 
     formulario = FormularioVentaTiquetera()
@@ -31,14 +34,14 @@ def venta(request):
         
         # Si el cliente no existe debe crearse
         try:
-            clienteForm = ClienteForm(data=request.POST)
+            cliente = Cliente.objects.create(nombre=nombre, cedula=cedula)
             tiqueteraForm = TiqueteraForm(data=request.POST)
 
-            cliente = clienteForm.save(commit=False)
+            # cliente = clienteForm.save(commit=False)
             tiquetera = tiqueteraForm.save(commit=False)
 
 
-            cliente.id_restaurante = restaurante
+            # cliente.id_restaurante = restaurante
             tiquetera.id_restaurante = restaurante
             tiquetera.id_cliente = cliente
             # Se debe guardar el cliente y la tiquetera
@@ -46,15 +49,15 @@ def venta(request):
             tiquetera.save()
 
         # Si el cliente ya existe se debe recuperar para asiganrle la tiquetera
-        except:
+        except IntegrityError:
             cliente = Cliente.objects.get(cedula=cedula)
             tiqueteraForm = TiqueteraForm(data=request.POST)
 
             tiquetera = tiqueteraForm.save(commit=False)
             tiquetera.id_restaurante = restaurante
             tiquetera.id_cliente = cliente
-            # Se debe guardar el cliente y la tiquetera
-            cliente.save()
+            # Se debe guardar la tiquetera
+            
             tiquetera.save()
         
         return redirect("clientes:index")
@@ -62,6 +65,7 @@ def venta(request):
         return render(request, "clientes/venta.html", {"formulario_venta": formulario})
 
 
+@login_required
 def compra(request):
 
     formulario = FormularioVentaAlmuerzo()
@@ -70,26 +74,31 @@ def compra(request):
     if request.method == 'POST':
 
         try:
-            cliente = Cliente.objects.get(cedula=request.POST.get("cedula"), id_restaurante = restaurante)
+            cliente = Cliente.objects.get(cedula=request.POST.get("cedula"))
             tiqueteras = Tiquetera.objects.filter(id_cliente=cliente, id_restaurante = restaurante)
-
-            print(list(tiqueteras))
+            if tiqueteras.count() == 0:
+                return render(request, "clientes/compra.html",
+                            {"error": "El cliente no tiene tiqueteras", 
+                            "formulario_compra": formulario}
+                            )
             return redirect("clientes:seleccionar_tiquetera", cliente_id=cliente.id)
         
         except ObjectDoesNotExist:
             return render(request, "clientes/compra.html",
-                            {"error": "El cliente no existe"}
+                            {"error": "El cliente no tiene tiqueteras",
+                            "formulario_compra": formulario}
                             )
     
     else:
         return render(request, "clientes/compra.html", {"formulario_compra": formulario})
 
 
+@login_required
 def seleccionar_tiquetera(request, cliente_id):
 
     restaurante = RestauranteUsuario.objects.get(usuario=request.user)
     tiqueteras = Tiquetera.objects.filter(id_restaurante = restaurante, id_cliente = cliente_id)
-    cliente = Cliente.objects.get(id=cliente_id, id_restaurante = restaurante)
+    cliente = Cliente.objects.get(id=cliente_id)
     
     if request.method == 'POST':
             tiquetera = Tiquetera.objects.get(pk=request.POST.get("tiquetera_select"), id_restaurante = restaurante, id_cliente = cliente)
@@ -117,10 +126,12 @@ def seleccionar_tiquetera(request, cliente_id):
         return render(request, "clientes/seleccionTiquetera.html", 
                         {"tiqueteras": tiqueteras, "cliente": cliente})
 
+
+@login_required
 def seleccionar_menu(request, cliente_id):
 
     restaurante = RestauranteUsuario.objects.get(usuario=request.user)
-    cliente = Cliente.objects.get(id=cliente_id, id_restaurante = restaurante)
+    cliente = Cliente.objects.get(id=cliente_id)
     menus = restaurante.menu_set.all()
     
     if request.method == 'POST':

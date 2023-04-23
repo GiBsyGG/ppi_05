@@ -3,29 +3,26 @@
 
 {% block content %}
 <main>
-    <style rel="stylesheet" type="text/css" href="styles\style_formularios.css"></style>
-    <div class="principal">
-        <div class="principal__texto">
-            <h1>Iniciar Sesión</h1>
-            <p>{{ error }}</p>
-            <form action={% url 'home:login' %} method="POST" class="form-login">
-
-                {% csrf_token %}
-                <div class="form-login__user">
-                    <div class="form-item">
-                        <label for="username">Usuario:</label>
-                        <input type="text" name="username" id="username" class="form-input" placeholder="Nombre de usuario" required>
+    <div class="container mt-5">
+        <div class="col-md-5 offset-md-4">
+            <div class="row">
+                <h1>Iniciar Sesión</h1>
+                <p>{{ error }}</p>          
+                <form action={% url 'home:login' %} method="POST" class="card card-body">
+                    {% csrf_token %}
+                    <div class="mb-1">
+                        <label for="username" class="form-label">Usuario:</label>
+                        <input type="text" name="username" id="username" class="form-control" placeholder="Nombre de usuario" required>
                     </div>
-                    <div class="form-item">
-                        <label for="password">Contraseña:</label>
-                        <input type="password" name="password" id="password" class="form-input" placeholder="Contraseña" required>
+                    <div class="mb-1">
+                        <label for="password" class="form-label">Contraseña:</label>
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" required>
                     </div>
-                </div>
-
-                <div class="form-login__botones">
-                    <button type="submit" class="form__botones__boton">Login</button>
-                </div>
-            </form>
+    
+                    <button type="submit" class="btn btn-outline-warning mt-2">Login</button>
+                    
+                </form>
+            </div>
         </div>
     </div>
 </main>

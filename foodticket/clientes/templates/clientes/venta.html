@@ -2,15 +2,14 @@
 {% load static %}
 
 {% block content_clientes %}
-    <div>
-        {% if "valido" in request.GET %}
-            <p style="color: white;" >Información enviada correctamente</p>
-        {% endif %}
-        <form action="{% url 'clientes:venta' %}" method="POST" style="text-align: center;"> {% csrf_token %}
-            <table style="color: black; margin: 20px auto;">
-                {{formulario_venta.as_table}}
-            </table>
-            <input type="submit" value="Enviar" style="width: 150px;">
-        </form>
+
+    <div class="container mt-2">
+        <div class="col-md-4 offset-md-3 mt-5">
+            <form action="{% url 'clientes:venta' %}" method="POST" class="card card-body">
+                {% csrf_token %}
+                    {{formulario_venta.as_table}}
+                <input type="submit" value="Enviar" class="btn btn-lg btn-outline-warning mt-3 me-2">
+            </form>
+        </div>
     </div>
 {% endblock  %}

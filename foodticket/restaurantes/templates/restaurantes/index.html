@@ -3,10 +3,14 @@
 
 {% block content %}
 <main>
-    <div class="principal">
-        <div class="principal__texto">
-            <h1>Apartado Restaurantes</h1>
-            <p>Tu asistente para restaurante</p>
+    <div class="container mt-5">
+        <div class="mt-5">
+            <h1>Clientes</h1>
+            <a href="{% url 'clientes:compra' %}" class="btn btn-lg btn-outline-warning mt-3 me-2">Vender almuerzo</a>
+            <a href="{% url 'clientes:venta' %}" class="btn btn-lg btn-outline-warning mt-3 me-2">Vender tiquetera </a>
+
+            {% block content_clientes %}
+            {% endblock  %}
         </div>
     </div>
 </main>

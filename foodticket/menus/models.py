@@ -1,9 +1,19 @@
 from django.db import models
 from restaurantes.models import RestauranteUsuario
+import os
+from django.core.exceptions import ValidationError
+
+def validate_image_extension(value):
+    ext = os.path.splitext(value.name)[1]  # Obtener la extensión del archivo
+    valid_extensions = ['.png']
+    if not ext.lower() in valid_extensions:
+        raise ValidationError('El archivo debe ser un PNG')
+    
 # Create your models here.
 class Menu(models.Model):
     nombre = models.CharField(max_length=100)
     descripcion = models.TextField(blank=True)
+    imagen = models.ImageField(upload_to='menu_imagenes', blank=True, null=True, validators=[validate_image_extension])
     lunes = models.BooleanField(default=False)
     martes = models.BooleanField(default=False)
     miercoles = models.BooleanField(default=False)

@@ -8,7 +8,8 @@
             <div class="row">
                 <h1>Crea tu Menú</h1>
                 <p>{{ error }}</p>
-                <form action="{% url 'menus:crear_menu' %}" method="POST" class="card card-body">
+                {% comment "" %} enctype="multipart/form-data" es muy importante ya que nos permite recibir imagenes en el form{% endcomment %}
+                <form action="{% url 'menus:crear_menu' %}" method="POST" enctype="multipart/form-data" class="card card-body">
                     {% csrf_token %}
                     <div class='row'>
                         <div>

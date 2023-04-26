@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import ValidationError
 
 from .models import Menu
 from  restaurantes.models import RestauranteUsuario
@@ -34,12 +35,12 @@ def crear_menu(request):
         })
     else:
         try:
-            # Llenamos el formulario con los datos ya creado con los datos del POST
-            form = MenuForm(request.POST)
+            # Llenamos el formulario con los datos ya creado con los datos del POST y los archivos subidos
+            form = MenuForm(request.POST, request.FILES)
 
             # Guardamos los datos como un menu, pero no guardamos en la DB
             menu = form.save(commit=False)
-
+            
             # Asignamos el restaurante del usuario a la variable restaurante
             restaurante = RestauranteUsuario.objects.get(usuario=request.user)
 
@@ -67,6 +68,11 @@ def crear_menu(request):
         except IntegrityError:
             return render(request, "menus/crear_menu.html", {
                 "error": "Menú ya creado"
+            })
+        except ValueError:
+            return render(request, "menus/crear_menu.html", {
+                "error": "Formato no admitido",
+                "form": MenuForm
             })
 
 

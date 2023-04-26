@@ -17,7 +17,7 @@
                     {% for menu in menus_restaurante %}
                         <div class="col">
                             <div class="card" style="width: 18rem">
-                                <img src="{% static 'home/images/plato_menu.png' %}" class="card-img-top" alt="menu">
+                                <img src="{{ MEDIA_URL }}{{ menu.imagen.url }}" class="card-img-top" alt="menu" width="200" height="200">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ menu.nombre }}</h5>
                                     <div class="overflow-hidden" style="height: 8rem">

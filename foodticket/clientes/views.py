@@ -3,9 +3,9 @@ from django.db import IntegrityError
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
-from .forms import FormularioVentaTiquetera,FormularioVentaAlmuerzo, ClienteForm, TiqueteraForm
+from .forms import FormularioVentaTiquetera,FormularioVentaAlmuerzo, ClienteForm
 from .models import Cliente, Tiquetera
-from restaurantes.models import RestauranteUsuario
+from restaurantes.models import RestauranteUsuario, TiqueteraVenta
 from pedidos.models import Pedido, MenuPedido
 from menus.models import Menu
 
@@ -21,6 +21,8 @@ def index(request):
 def venta(request):
 
     formulario = FormularioVentaTiquetera()
+    restaurante = RestauranteUsuario.objects.get(usuario=request.user)
+    tiqueteras_restaurante = TiqueteraVenta.objects.filter(id_restaurante=restaurante)
 
     if request.method == 'POST':
 
@@ -30,20 +32,15 @@ def venta(request):
         if formulario.is_valid():
             nombre = request.POST.get("nombre")
             cedula = request.POST.get("cedula")
-            cantidad = request.POST.get("cantidad")
         
+        # Se guarda la tiquetaera seleccionada
+        tiquetera_venta = TiqueteraVenta.objects.get(id=request.POST.get("tiquetera_select"))
+        cantidad_tiquetes = tiquetera_venta.cantidad
         # Si el cliente no existe debe crearse
         try:
             cliente = Cliente.objects.create(nombre=nombre, cedula=cedula)
-            tiqueteraForm = TiqueteraForm(data=request.POST)
+            tiquetera = Tiquetera.objects.create(cantidad=cantidad_tiquetes, id_restaurante=restaurante, id_cliente=cliente)
 
-            # cliente = clienteForm.save(commit=False)
-            tiquetera = tiqueteraForm.save(commit=False)
-
-
-            # cliente.id_restaurante = restaurante
-            tiquetera.id_restaurante = restaurante
-            tiquetera.id_cliente = cliente
             # Se debe guardar el cliente y la tiquetera
             cliente.save()
             tiquetera.save()
@@ -51,18 +48,19 @@ def venta(request):
         # Si el cliente ya existe se debe recuperar para asiganrle la tiquetera
         except IntegrityError:
             cliente = Cliente.objects.get(cedula=cedula)
-            tiqueteraForm = TiqueteraForm(data=request.POST)
 
-            tiquetera = tiqueteraForm.save(commit=False)
-            tiquetera.id_restaurante = restaurante
-            tiquetera.id_cliente = cliente
+            tiquetera = Tiquetera.objects.create(cantidad=cantidad_tiquetes, id_restaurante=restaurante, id_cliente=cliente)
+            
             # Se debe guardar la tiquetera
             
             tiquetera.save()
         
         return redirect("clientes:index")
     else:
-        return render(request, "clientes/venta.html", {"formulario_venta": formulario})
+        return render(request, "clientes/venta.html", {
+            "formulario_venta": formulario,
+            "tiqueteras": tiqueteras_restaurante
+            })
 
 
 @login_required

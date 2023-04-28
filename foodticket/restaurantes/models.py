@@ -22,3 +22,9 @@ class RestauranteUsuario(models.Model):
 
     # Cada restaurante tiene un usuario asociado
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+
+class TiqueteraVenta(models.Model):
+    cantidad = models.IntegerField()
+    precio = models.IntegerField()
+
+    id_restaurante = models.ForeignKey(RestauranteUsuario, on_delete=models.CASCADE)

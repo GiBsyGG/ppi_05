@@ -7,7 +7,7 @@ def validate_image_extension(value):
     ext = os.path.splitext(value.name)[1]  # Obtener la extensión del archivo
     valid_extensions = ['.png', '.jpg', '.jpeg']
     if not ext.lower() in valid_extensions:
-        raise ValidationError('El archivo debe ser un PNG')
+        raise ValidationError('El archivo debe ser un PNG, JPG o JPEG')
     
 # Create your models here.
 class Menu(models.Model):

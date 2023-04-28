@@ -3,7 +3,6 @@ from .models import Cliente, Tiquetera
 class FormularioVentaTiquetera(forms.Form):
     nombre = forms.CharField(label="Nombre", widget=forms.TextInput(attrs={"class": "form-control"}))
     cedula = forms.CharField(label="Cedula", widget=forms.TextInput(attrs={"class": "form-control", "required": True}))
-    cantidad = forms.IntegerField(label="Cantidad", widget=forms.NumberInput(attrs={"class": "form-control", "required": True}))
     
 
 class FormularioVentaAlmuerzo(forms.Form):
@@ -17,13 +16,4 @@ class ClienteForm(forms.ModelForm):
         widgets = {
             "nombre": forms.TextInput(attrs={"class": "form-control", "required": True}),
             "cedula": forms.TextInput(attrs={"class": "form-control", "required": True}),
-        }
-
-
-class TiqueteraForm(forms.ModelForm):
-    class Meta:
-        model = Tiquetera
-        fields = ["cantidad"]
-        widgets = {
-            "cantidad": forms.NumberInput(attrs={"class": "form-control", "required": True}),
         }

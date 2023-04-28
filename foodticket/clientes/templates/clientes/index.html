@@ -13,5 +13,20 @@
             {% endblock  %}
         </div>
     </div>
+
+    {% if not request.user.is_authenticated %}
+    <div class="container mt-5">
+        <div class="mt-5">
+
+            <form action="{% url 'clientes:informacion_cliente' %}" method="POST" class="card card-body">
+                {% csrf_token %}
+                {{formulario_compra.as_p}}
+                <input type="submit" value="Seleccionar" class="btn btn-lg btn-outline-warning mt-3 me-2">
+            </form>
+
+        </div>
+    </div>
+    {% endif %}
+
 </main>
 {% endblock  %}

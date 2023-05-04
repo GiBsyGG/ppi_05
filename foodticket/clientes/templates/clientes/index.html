@@ -3,30 +3,30 @@
 
 {% block content %}
 <main>
-    <div class="container mt-5">
-        <div class="mt-5">
-            <h1>Clientes</h1>
-            <a href="{% url 'clientes:compra' %}" class="btn btn-lg btn-outline-warning mt-3 me-2">Vender almuerzo</a>
-            <a href="{% url 'clientes:venta' %}" class="btn btn-lg btn-outline-warning mt-3 me-2">Vender tiquetera </a>
+    {% if request.user.is_authenticated %}
+        <div class="container mt-5">
+            <div class="mt-5">
+                <h1>Clientes</h1>
+                <a href="{% url 'clientes:compra' %}" class="btn btn-lg btn-outline-warning mt-3 me-2">Vender almuerzo</a>
+                <a href="{% url 'clientes:venta' %}" class="btn btn-lg btn-outline-warning mt-3 me-2">Vender tiquetera </a>
 
-            {% block content_clientes %}
-            {% endblock  %}
+                {% block content_clientes %}
+                {% endblock  %}
+            </div>
         </div>
-    </div>
+    {% else %}
+        <div class="container mt-5">
+            <div class="mt-5">
+                <h1>Clientes</h1>
 
-    {% if not request.user.is_authenticated %}
-    <div class="container mt-5">
-        <div class="mt-5">
+                <form action="{% url 'clientes:informacion_cliente' %}" method="POST" class="card card-body">
+                    {% csrf_token %}
+                    {{formulario_compra.as_p}}
+                    <input type="submit" value="Seleccionar" class="btn btn-lg btn-outline-warning mt-3 me-2">
+                </form>
 
-            <form action="{% url 'clientes:informacion_cliente' %}" method="POST" class="card card-body">
-                {% csrf_token %}
-                {{formulario_compra.as_p}}
-                <input type="submit" value="Seleccionar" class="btn btn-lg btn-outline-warning mt-3 me-2">
-            </form>
-
+            </div>
         </div>
-    </div>
     {% endif %}
-
 </main>
-{% endblock  %}
+{% endblock content %}
